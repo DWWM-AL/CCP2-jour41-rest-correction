@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Actor;
+use App\Models\Director;
+use App\Models\Movie;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $directors = Director::factory(20)->create();
+        $actors = Actor::factory(150)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        Movie::factory(50)
+            ->sequence(fn ($sequence) => [
+                'director_id' => $directors->random(),
+            ])
+            ->create()
+            ->each(fn ($movie) => $movie->actors()->attach($actors->random(5)));
     }
 }
