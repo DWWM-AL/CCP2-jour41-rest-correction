@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Actor;
 use App\Models\Director;
 use App\Models\Movie;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

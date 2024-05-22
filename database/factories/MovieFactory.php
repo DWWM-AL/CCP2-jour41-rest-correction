@@ -18,7 +18,7 @@ class MovieFactory extends Factory
     {
         return [
             'title' => fake()->sentence,
-            'duration' => fake()->numberBetween(8,160),
+            'duration' => fake()->numberBetween(8, 160),
             'release' => fake()->date,
             'synopsis' => fake()->paragraphs(asText: true),
         ];
