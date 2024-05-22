@@ -15,8 +15,8 @@ class MovieController extends Controller
     {
         return MovieResource::collection(
             Movie::list()
-                    ->without('director', 'actors')
-                    ->paginate()
+                ->without('director', 'actors')
+                ->paginate()
         );
     }
 

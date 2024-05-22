@@ -29,7 +29,7 @@ class MovieTest extends TestCase
             '*' => [
                 'id',
                 'name',
-            ]
+            ],
         ],
     ];
 
@@ -55,7 +55,7 @@ class MovieTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => static::listStructure,
-                ]
+                ],
             ]);
     }
 
@@ -102,14 +102,14 @@ class MovieTest extends TestCase
             ])
             ->assertJson([
                 'data' => $attributes + [
-                        'director' => [
-                            'id' => $relationships['director_id'],
-                        ],
-                        'actors' => array_map(
-                            fn (int $actorId) => ['id' => $actorId],
-                            $relationships['actors']->toArray()
-                        )
-                    ]
+                    'director' => [
+                        'id' => $relationships['director_id'],
+                    ],
+                    'actors' => array_map(
+                        fn (int $actorId) => ['id' => $actorId],
+                        $relationships['actors']->toArray()
+                    ),
+                ],
             ]);
     }
 
@@ -141,14 +141,14 @@ class MovieTest extends TestCase
             ])
             ->assertJson([
                 'data' => $newAttributes + [
-                        'director' => [
-                            'id' => $newRelationships['director_id'],
-                        ],
-                        'actors' => array_map(
-                            fn (int $actorId) => ['id' => $actorId],
-                            $newRelationships['actors']->toArray()
-                        )
-                    ]
+                    'director' => [
+                        'id' => $newRelationships['director_id'],
+                    ],
+                    'actors' => array_map(
+                        fn (int $actorId) => ['id' => $actorId],
+                        $newRelationships['actors']->toArray()
+                    ),
+                ],
             ]);
     }
 
